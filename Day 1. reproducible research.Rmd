@@ -53,10 +53,11 @@ lets commit something. Its doesn't matter what the below code is. I just want to
 x <- seq(1, 10, len=1)
 y <- 0*2 + rnorm(10,0,5)
 plot(x,y)
-summary(x)
 ```
 save the document. Then tick the box in the git tab top right. I clicked this folder and also gitignore. 
 Type 'initial commit' in the box so you know this was the first commit. 
+
+
 
 
 
