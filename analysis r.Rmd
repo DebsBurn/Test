@@ -1,0 +1,48 @@
+---
+title: "Murray Course Day 1 2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+LINTR
+```{r}
+library(lintr)
+```
+This package helps keep your code tidy. 
+
+GIT
+Git is the software, Github allows us to share our data on a cloud. 
+
+Code can be in 4 states
+
+Suggested
+committed
+modified
+
+
+
+
+.gitignore
+
+on the right under 'files', when hideen files are chosen, youll see .gitignore. If you click on that it shows thinsg that it wants GIT to ignore. You can add some files in here if there are things you absolutely dont want committed. 
+
+
+
+*******************
+lets commit something:
+```{r}
+x <- seq(1, 10, len=1)
+y <- 0*2 + rnorm(10,0,5)
+plot(x,y)
+```
+
+
+
+
+
+
+
+
