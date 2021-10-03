@@ -1,0 +1,66 @@
+---
+title: "Murray Course Day 1 2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+LINTR
+```{r}
+library(lintr)
+```
+This package helps keep your code tidy. 
+
+GIT
+Git is the software, Github allows us to share our data on a cloud. 
+
+Code can be in 4 states:
+
+Untracked - git doesn't know this exists
+Staged - suggested for committal
+Committed - snapshot taken
+Modified - you've since changed the committed file. 
+
+We have three trees associated with GIT
+
+1. workspace. This is my workspace, my own file browser
+2. staging area. Where your files have been suggested for committal and are waiting
+3. local repository. your file is now on the local repository.
+
+GIT configuration
+
+Do this in the CONSOLE once per machine:
+```{r}
+usethis::use_git_config(user.name='Your name',
+               user.email='your_email@whatever.com',
+               scope='user')
+usethis::git_sitrep()
+```
+usethis is a package you must install first.
+
+
+.gitignore
+
+on the right under 'files', when hidden files are chosen, you'll see .gitignore. If you click on that it shows thinsg that it wants GIT to ignore. You can add some files in here if there are things you absolutely don't want committed. 
+
+
+
+*******************
+lets commit something. Its doesn't matter what the below code is. I just want to make a change.
+```{r}
+x <- seq(1, 10, len=1)
+y <- 0*2 + rnorm(10,0,5)
+plot(x,y)
+summary(x)
+```
+save the document. Then tick the box in the git tab top right. I clicked this folder and also gitignore. 
+Type 'initial commit' in the box so you know this was the first commit. 
+
+
+
+
+
+
+
