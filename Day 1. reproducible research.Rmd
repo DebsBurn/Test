@@ -7,55 +7,115 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-LINTR
+
+MURRAY LOGAN STATS COURSE DAY 1
+Reproducible Research
+
+*LINTR*
 ```{r}
 library(lintr)
 ```
 This package helps keep your code tidy. 
 
-GIT
-Git is the software, Github allows us to share our data on a cloud. 
+*GIT*
+Git is a versioning control software, Github allows us to share our data on a cloud and collaborate. 
+Git effectively saves only the changes made to the new version of file. It doesn't save duplicate versions, only the changes made, and links it to a parent file. 
+Git store snapshots of the file called 'commits'.
 
-Code can be in 4 states:
-
-Untracked - git doesn't know this exists
-Staged - suggested for committal
-Committed - snapshot taken
-Modified - you've since changed the committed file. 
-
-We have three trees associated with GIT
+The system consists of three TREES:
 
 1. workspace. This is my workspace, my own file browser
 2. staging area. Where your files have been suggested for committal and are waiting
 3. local repository. your file is now on the local repository.
 
+Files can be in one of 4 states:
+
+Un-tracked - git doesn't know this exists
+Staged - suggested for committal
+Committed - snapshot taken
+Modified - you've since changed the committed file. 
+
 GIT configuration
 
-Do this in the CONSOLE once per machine:
+Do this in the CONSOLE once per machine to get git to work with RStudio, and associate your identity with chnages you make:
 ```{r}
 usethis::use_git_config(user.name='Your name',
                user.email='your_email@whatever.com',
                scope='user')
 usethis::git_sitrep()
 ```
-usethis is a package you must install first.
+'usethis' is a package you must install first.
 
+*Making a new GIT repository*
 
-.gitignore
+Make a new project, after installing GIT and make sure to click the git repository tick box. 
 
-on the right under 'files', when hidden files are chosen, you'll see .gitignore. If you click on that it shows thinsg that it wants GIT to ignore. You can add some files in here if there are things you absolutely don't want committed. 
-
+On the right under 'files', when hidden files are chosen, you'll see .gitignore. If you click on that it shows things that it wants GIT to ignore. You can add some files in here if there are things you absolutely don't want committed. 
 
 
 *******************
-lets commit something. Its doesn't matter what the below code is. I just want to make a change.
+To commit something. It doesn't matter what the below code is. I just want to make a change to this document to commit it.
 ```{r}
 x <- seq(1, 10, len=1)
 y <- 0*2 + rnorm(10,0,5)
 plot(x,y)
+
 ```
 save the document. Then tick the box in the git tab top right. I clicked this folder and also gitignore. 
 Type 'initial commit' in the box so you know this was the first commit. 
+
+Say you wanted to commit two files to the same 'tree'. make a new file and add some new code.
+
+Some commits could be milestones - ie. the code when you submitted your thesis. or the code you had when the paper was first submitted. We can TAG these commits to make them stand out as important. 
+Install GERT, and run in the CONSOLE:
+```{r}
+library(gert)
+
+#gert::git_tag_create(name='V1', message='version 1')
+```
+You cant have special characters in these tags- no spaces etc. But the name could read 'Submitted_Thesis'.
+
+Rolling Back a Commit
+
+There are three ways to roll back. We only cover 2. 
+
+1. checkout
+2. reset
+3. Revert
+
+Checkout
+we use the SHA code (you can see this on the GIT tab history) to go back to the commit we want. 
+To do this:
+```{r}
+#gert::git_branch_create(branch = 'temp', ref = '363c6582', checkout = TRUE)
+```
+
+This will go back a couple of commits, so you can make changes. 
+
+To go back to the current state- the most recent file again, you can click on the top right drop down box that says 'temp', and find 'master'. 
+or type:
+
+```{r}
+#gert::git_branch_checkout(branch = 'master')
+```
+
+Reset
+We ONLY do this if you want the change to be permanent.
+
+Revert
+This is effectively a reverse. it commits a new file in the train of files that is the same as the one BEFORE the last one. 
+You cant do this in rstudio. We need to do it in the terminal:
+```{r}
+#git revert HEAD --no-edit
+```
+
+your history will have a message for the new committal that says "REVERT- your old message". 
+
+
+*Branching*
+
+Click on the flowchart button on the top right. You can name your new branch, which i called 'experimental. In Hisotry, the HEAD will be pointing to the new branch. 
+Make some changes and then commit again to see the branches. 
 
 
 
